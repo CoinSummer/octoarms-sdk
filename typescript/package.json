@@ -1,0 +1,9 @@
+{
+  "name": "collector-sdk-typescript",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "pnpm dlx tsx --test src/context.test.ts"
+  }
+}
