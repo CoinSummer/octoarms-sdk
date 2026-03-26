@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chainbase-collector-sdk"
+version = "0.1.0"
+description = "Python collector SDK for Chainbase task runtime"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "CoinSummer" }]
+dependencies = []
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Operating System :: OS Independent",
+]
+
+[tool.setuptools.packages.find]
+include = ["collector_sdk", "collector_sdk.*"]

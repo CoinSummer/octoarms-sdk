@@ -8,6 +8,33 @@ Python SDK for task collectors running on the Chainbase task platform.
 pip install .
 ```
 
+## Publish to PyPI
+
+### Local build and check
+
+```bash
+python -m pip install --upgrade build twine
+python -m build
+twine check dist/*
+```
+
+### Manual upload
+
+```bash
+twine upload dist/*
+```
+
+### GitHub Actions auto publish
+
+1. Add repository secret `PYPI_API_TOKEN` (value: your PyPI API token).
+2. Bump version in `python/pyproject.toml`.
+3. Create and push tag with `py-v*` format, for example:
+
+```bash
+git tag py-v0.1.1
+git push origin py-v0.1.1
+```
+
 ## Usage
 
 ```python
