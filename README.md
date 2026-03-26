@@ -4,7 +4,7 @@ Unified SDK repository for Octoarms task runtimes.
 
 ## Layout
 
-- `python/` - Python collector SDK (`collector_sdk`)
+- `python/` - Python collector SDK (`octoarms_sdk`)
 - `typescript/` - TypeScript collector SDK (`collector-sdk-typescript`)
 
 ## Python SDK
@@ -18,7 +18,7 @@ pip install "git+https://github.com/CoinSummer/octoarms-sdk.git@main#subdirector
 Minimal usage:
 
 ```python
-from collector_sdk import TaskContext, build_data_api_upsert_fn
+from octoarms_sdk import TaskContext, build_data_api_upsert_fn
 
 upsert_fn = build_data_api_upsert_fn(
     capability_endpoint="http://chainbase-block-scanner-fetcher-test-svc",
@@ -41,7 +41,7 @@ Run tests:
 
 ```bash
 cd python
-python3 -m unittest collector_sdk.data_api_test
+python3 -m unittest octoarms_sdk.data_api_test
 ```
 
 ## TypeScript SDK

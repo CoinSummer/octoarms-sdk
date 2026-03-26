@@ -3,8 +3,8 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "chainbase-collector-sdk"
-version = "0.1.0"
+name = "octoarms-sdk"
+version = "0.1.1"
 description = "Python collector SDK for Chainbase task runtime"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -18,4 +18,4 @@ classifiers = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["collector_sdk", "collector_sdk.*"]
+include = ["octoarms_sdk", "octoarms_sdk.*"]

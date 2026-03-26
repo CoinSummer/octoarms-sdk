@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import unittest
 
-from collector_sdk.data_api import build_data_api_upsert_fn
+from octoarms_sdk.data_api import build_data_api_upsert_fn
 
 
 class BuildDataAPIUpsertFnTests(unittest.TestCase):

@@ -1,4 +1,4 @@
-# chainbase-collector-sdk
+# octoarms-sdk
 
 Python SDK for task collectors running on the Chainbase task platform.
 
@@ -38,7 +38,7 @@ git push origin py-v0.1.1
 ## Usage
 
 ```python
-from collector_sdk import TaskContext, build_data_api_upsert_fn
+from octoarms_sdk import TaskContext, build_data_api_upsert_fn
 
 upsert_fn = build_data_api_upsert_fn(
     capability_endpoint="http://chainbase-block-scanner-fetcher-test-svc",
