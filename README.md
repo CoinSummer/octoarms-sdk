@@ -73,3 +73,14 @@ Run tests:
 cd typescript
 npm test
 ```
+
+Publish to npm (GitHub Actions):
+
+1. Add repository secret `NPM_TOKEN` (npm Automation Token).
+2. Bump `typescript/package.json` version.
+3. Create and push a `ts-v*` tag, for example:
+
+```bash
+git tag ts-v0.1.1
+git push origin ts-v0.1.1
+```
