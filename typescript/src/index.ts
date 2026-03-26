@@ -1,4 +1,4 @@
-export { CollectorContext } from "./context"
+export { CollectorContext } from "./context.js"
 export type {
   CapabilityProvider,
   DataQueryPayload,
@@ -7,4 +7,4 @@ export type {
   TaskContext,
   TaskEvent,
   UpsertFn,
-} from "./context"
+} from "./context.js"
