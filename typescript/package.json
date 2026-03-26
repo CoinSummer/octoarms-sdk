@@ -1,6 +1,10 @@
 {
   "name": "@coinsummer/octoarms-sdk",
   "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CoinSummer/octoarms-sdk"
+  },
   "publishConfig": {
     "access": "public"
   },
