@@ -9,10 +9,10 @@ Unified SDK repository for Octoarms task runtimes.
 
 ## Python SDK
 
-Install from this repository:
+Install from PyPI:
 
 ```bash
-pip install "git+https://github.com/CoinSummer/octoarms-sdk.git@main#subdirectory=python"
+pip install octoarms-sdk
 ```
 
 Minimal usage:
@@ -46,16 +46,16 @@ python3 -m unittest octoarms_sdk.data_api_test
 
 ## TypeScript SDK
 
-Install in another project:
+Install with pnpm:
 
 ```bash
-npm install "github:CoinSummer/octoarms-sdk#main"
+pnpm add @coinsummer/octoarms-sdk
 ```
 
 Minimal usage:
 
 ```ts
-import { CollectorContext } from "./typescript/src/index"
+import { CollectorContext } from "@coinsummer/octoarms-sdk"
 
 const ctx = new CollectorContext({
   runId: "run-1",
@@ -71,7 +71,7 @@ Run tests:
 
 ```bash
 cd typescript
-npm test
+pnpm test
 ```
 
 Publish to npm (GitHub Actions):

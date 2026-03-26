@@ -5,7 +5,7 @@ Python SDK for task collectors running on the Chainbase task platform.
 ## Install
 
 ```bash
-pip install .
+pip install octoarms-sdk
 ```
 
 ## Publish to PyPI
