@@ -18,7 +18,7 @@ pip install octoarms-sdk
 Minimal usage:
 
 ```python
-from octoarms_sdk import TaskContext, build_data_api_upsert_fn
+from octoarms_sdk import TaskContext, build_data_api_upsert_fn, migrate
 
 upsert_fn = build_data_api_upsert_fn(
     capability_endpoint="http://chainbase-block-scanner-fetcher-test-svc",
@@ -35,13 +35,25 @@ ctx = TaskContext(
 
 ctx.emit("demo.schema", {"foo": "bar"})
 ctx.upsert("demo_dataset", [{"id": "1", "foo": "bar"}], ["id"])
+
+migrate(
+    {
+        "task_name": "demo_task",
+        "task_version": "v0.1.0",
+        "migration_version": "20260329_01_init",
+        "capability_endpoint": "http://chainbase-block-scanner-fetcher-test-svc",
+        "ephemeral_token": "ephemeral-token",
+        "migration_index": {"20260329_01_init": "migrations/20260329_01_init.sql"},
+        "task_root_dir": ".",
+    }
+)
 ```
 
 Run tests:
 
 ```bash
 cd python
-python3 -m unittest octoarms_sdk.data_api_test
+python3 -m unittest octoarms_sdk.data_api_test octoarms_sdk.migration_test
 ```
 
 ## TypeScript SDK
@@ -55,7 +67,7 @@ pnpm add @coinsummer/octoarms-sdk
 Minimal usage:
 
 ```ts
-import { CollectorContext } from "@coinsummer/octoarms-sdk"
+import { CollectorContext, migrate } from "@coinsummer/octoarms-sdk"
 
 const ctx = new CollectorContext({
   runId: "run-1",
@@ -65,6 +77,16 @@ const ctx = new CollectorContext({
 
 ctx.log("info", "collector started")
 ctx.emit("demo.schema", { foo: "bar" })
+
+await migrate({
+  taskName: "demo_task",
+  taskVersion: "v0.1.0",
+  migrationVersion: "20260329_01_init",
+  capabilityEndpoint: "http://chainbase-block-scanner-fetcher-test-svc",
+  ephemeralToken: "ephemeral-token",
+  migrationIndex: { "20260329_01_init": "migrations/20260329_01_init.sql" },
+  taskRootDir: ".",
+})
 ```
 
 Run tests:

@@ -1,5 +1,6 @@
 export { CollectorContext } from "./context.js"
 export { buildDataApiUpsertFn } from "./data_api.js"
+export { migrate } from "./migration.js"
 export type {
   CapabilityProvider,
   DataQueryPayload,
@@ -10,3 +11,4 @@ export type {
   UpsertFn,
 } from "./context.js"
 export type { RequestFn } from "./data_api.js"
+export type { MigrateOptions, MigrateResult } from "./migration.js"
