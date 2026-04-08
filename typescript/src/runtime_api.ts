@@ -125,7 +125,7 @@ export const buildTaskRuntimeClient = (
 
   return {
     async resolveSnapshot(input: ResolveSnapshotInput): Promise<RuntimeSnapshotSource[]> {
-      const data = await call<Record<string, unknown>>("/api/external/task-runtime/snapshot/resolve", {
+      const data = await call<Record<string, unknown>>("/api/internal/task-runtime/snapshot/resolve", {
         snapshot_ref: asString(input.snapshotRef).trim(),
         task_name: asString(input.taskName).trim(),
         run_id: asString(input.runID).trim(),
@@ -138,7 +138,7 @@ export const buildTaskRuntimeClient = (
     },
 
     async claimCursor(input: ClaimCursorInput): Promise<RuntimeCursorState> {
-      const data = await call<Record<string, unknown>>("/api/external/task-runtime/cursor/claim", {
+      const data = await call<Record<string, unknown>>("/api/internal/task-runtime/cursor/claim", {
         task_name: input.taskName,
         source_id: input.sourceID,
       })
@@ -150,7 +150,7 @@ export const buildTaskRuntimeClient = (
     },
 
     async commitCursor(input: CommitCursorInput): Promise<RuntimeCursorState> {
-      const data = await call<Record<string, unknown>>("/api/external/task-runtime/cursor/commit", {
+      const data = await call<Record<string, unknown>>("/api/internal/task-runtime/cursor/commit", {
         task_name: input.taskName,
         source_id: input.sourceID,
         expected_version: input.expectedVersion,
@@ -164,7 +164,7 @@ export const buildTaskRuntimeClient = (
     },
 
     async emit(input: EmitRuntimeInput): Promise<void> {
-      await call("/api/external/task-runtime/emit", {
+      await call("/api/internal/task-runtime/emit", {
         event_type: input.eventType,
         task_name: input.taskName,
         task_version: input.taskVersion,

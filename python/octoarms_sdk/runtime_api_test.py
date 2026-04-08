@@ -21,7 +21,7 @@ class BuildTaskRuntimeClientTests(unittest.TestCase):
         items = client.resolve_snapshot(snapshot_ref="snap-1", task_name="twitter_list_tweets", run_id="1001")
 
         self.assertEqual(items, [{"source_id": 1, "source_key": "main"}])
-        self.assertEqual(captured["url"], "https://scanner.internal/api/external/task-runtime/snapshot/resolve")
+        self.assertEqual(captured["url"], "https://scanner.internal/api/internal/task-runtime/snapshot/resolve")
         self.assertEqual(captured["method"], "POST")
         self.assertEqual(captured["auth"], "Bearer token-abc")
 

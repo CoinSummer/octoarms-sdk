@@ -69,7 +69,7 @@ class TaskRuntimeClient:
 
     def resolve_snapshot(self, *, snapshot_ref: str, task_name: str = "", run_id: str = "") -> list[dict[str, Any]]:
         data = self._call(
-            "/api/external/task-runtime/snapshot/resolve",
+            "/api/internal/task-runtime/snapshot/resolve",
             {
                 "snapshot_ref": str(snapshot_ref).strip(),
                 "task_name": str(task_name).strip(),
@@ -83,7 +83,7 @@ class TaskRuntimeClient:
 
     def claim_cursor(self, *, task_name: str, source_id: int) -> dict[str, Any]:
         data = self._call(
-            "/api/external/task-runtime/cursor/claim",
+            "/api/internal/task-runtime/cursor/claim",
             {
                 "task_name": str(task_name),
                 "source_id": int(source_id),
@@ -101,7 +101,7 @@ class TaskRuntimeClient:
         cursor_json: dict[str, Any],
     ) -> dict[str, Any]:
         data = self._call(
-            "/api/external/task-runtime/cursor/commit",
+            "/api/internal/task-runtime/cursor/commit",
             {
                 "task_name": str(task_name),
                 "source_id": int(source_id),
@@ -124,7 +124,7 @@ class TaskRuntimeClient:
         payload: dict[str, Any],
     ) -> None:
         self._call(
-            "/api/external/task-runtime/emit",
+            "/api/internal/task-runtime/emit",
             {
                 "event_type": str(event_type),
                 "task_name": str(task_name),

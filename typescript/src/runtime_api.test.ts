@@ -18,7 +18,7 @@ describe("buildTaskRuntimeClient", () => {
 
     assert.deepEqual(items, [{ source_id: 1, source_key: "main" }])
     assert.equal(calls.length, 1)
-    assert.equal(calls[0]?.url, "https://scanner.internal/api/external/task-runtime/snapshot/resolve")
+    assert.equal(calls[0]?.url, "https://scanner.internal/api/internal/task-runtime/snapshot/resolve")
     assert.deepEqual(calls[0]?.headers, {
       "Content-Type": "application/json",
       Authorization: "Bearer token-abc",
