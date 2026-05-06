@@ -46,7 +46,7 @@ const normalizeBaseUrl = (raw: string): string => {
   return base.replace(/\/+$/, "")
 }
 
-const DEFAULT_HANDLER_TIMEOUT_MS = 180_000
+const DEFAULT_HANDLER_TIMEOUT_MS = 300_000
 
 const getHandlerTimeoutMs = (): number => {
   const envValue = process.env.HANDLER_TIMEOUT_MS
