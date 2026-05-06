@@ -46,12 +46,25 @@ const normalizeBaseUrl = (raw: string): string => {
   return base.replace(/\/+$/, "")
 }
 
+const DEFAULT_HANDLER_TIMEOUT_MS = 60_000
+
+const getHandlerTimeoutMs = (): number => {
+  const envValue = process.env.HANDLER_TIMEOUT_MS
+  if (envValue) {
+    const parsed = parseInt(envValue, 10)
+    if (!isNaN(parsed) && parsed > 0) {
+      return parsed
+    }
+  }
+  return DEFAULT_HANDLER_TIMEOUT_MS
+}
+
 const defaultRequest: HandlerRequestFn = async (url, method, headers, body) => {
   const response = await fetch(url, {
     method,
     headers,
     body,
-    signal: AbortSignal.timeout(20_000),
+    signal: AbortSignal.timeout(getHandlerTimeoutMs()),
   })
   return {
     status: response.status,
