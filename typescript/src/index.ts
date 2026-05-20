@@ -2,6 +2,8 @@ export { CollectorContext } from "./context.js"
 export { buildDataApiUpsertFn } from "./data_api.js"
 export { buildTaskRuntimeClient } from "./runtime_api.js"
 export { buildTaskHandlerClient } from "./handler_api.js"
+export { buildPodcastExtractorClient } from "./podcast_extractor_client.js"
+export { buildTranscriptClient } from "./transcript_client.js"
 export { migrate } from "./migration.js"
 export type {
   CapabilityProvider,
@@ -13,6 +15,8 @@ export type {
   UpsertFn,
 } from "./context.js"
 export type { RequestFn } from "./data_api.js"
+export type { PodcastDiscoverInput, PodcastExtractInput, PodcastExtractorClient, PodcastExtractorRequestFn } from "./podcast_extractor_client.js"
+export type { SubmitTranscriptInput, TranscriptClient, TranscriptRequestFn } from "./transcript_client.js"
 export type {
   HandlerInvokeInput,
   HandlerInvokeOutput,
