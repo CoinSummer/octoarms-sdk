@@ -9,6 +9,7 @@ export type SubmitTranscriptInput = {
   url: string
   language?: string
   title?: string
+  metadata?: Record<string, unknown>
   forceRetranscribe?: boolean
 }
 
@@ -62,6 +63,7 @@ export const buildTranscriptClient = (
         url: input.url,
         language: (input.language ?? "").trim(),
         title: (input.title ?? "").trim(),
+        metadata: input.metadata ?? {},
         force_retranscribe: Boolean(input.forceRetranscribe),
       }),
     getTranscript: async (jobId) => await doRequest(`/api/external/transcripts/${encodeURIComponent(jobId)}`, "GET"),
