@@ -38,7 +38,13 @@ git push origin py-v0.1.1
 ## Usage
 
 ```python
-from octoarms_sdk import TaskContext, build_data_api_upsert_fn
+from octoarms_sdk import (
+    TaskContext,
+    build_data_api_upsert_fn,
+    build_oss_upload_client,
+    build_podcast_extractor_client,
+    build_transcript_client,
+)
 
 upsert_fn = build_data_api_upsert_fn(
     capability_endpoint="http://chainbase-block-scanner-fetcher-test-svc",
@@ -51,4 +57,31 @@ ctx = TaskContext(
     task_version="v0.1.0",
     upsert=upsert_fn,
 )
+
+extractor = build_podcast_extractor_client(
+    capability_endpoint="http://chainbase-block-scanner-fetcher-test-svc",
+    ephemeral_token="token-abc",
+)
+audio = extractor.extract_audio(
+    platform="rss_feed",
+    episode_url="https://example.com/episode",
+)
+
+oss = build_oss_upload_client(
+    capability_endpoint="http://chainbase-block-scanner-fetcher-test-svc",
+    ephemeral_token="token-abc",
+)
+uploaded = oss.upload_object_bytes(
+    bucket="media-bucket",
+    object_key="podcasts/demo.mp3",
+    content=b"audio bytes",
+    content_type="audio/mpeg",
+)
+
+transcripts = build_transcript_client(
+    capability_endpoint="http://chainbase-block-scanner-fetcher-test-svc",
+    ephemeral_token="token-abc",
+)
+job = transcripts.submit_transcript(url=str(uploaded["uri"]), language="en")
+transcript = transcripts.wait_transcript(str(job["job_id"]))
 ```
