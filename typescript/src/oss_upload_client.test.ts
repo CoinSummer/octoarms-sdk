@@ -63,6 +63,23 @@ describe("buildOssUploadClient", () => {
     assert.equal(out.uri, "oss://bucket/key.txt")
   })
 
+  it("allows backend configured bucket by omitting bucket", async () => {
+    const client = buildOssUploadClient("https://scanner", "", async (_url, _method, _headers, body) => {
+      const payload = JSON.parse(body)
+      assert.equal(payload.bucket, undefined)
+      assert.equal(payload.object_key, "datasets/demo.json")
+      return { status: 200, text: JSON.stringify({ code: 0, data: { bucket: "dataset-bucket", uri: "oss://dataset-bucket/datasets/demo.json" } }) }
+    })
+
+    const out = await client.uploadObject({
+      objectKey: "datasets/demo.json",
+      contentBase64: "eyJvayI6dHJ1ZX0=",
+      contentType: "application/json",
+    })
+
+    assert.equal(out.bucket, "dataset-bucket")
+  })
+
   it("raises on failed upload", async () => {
     const client = buildOssUploadClient("https://scanner", "", async () => ({
       status: 403,

@@ -47,9 +47,9 @@ class OSSUploadClient:
     def upload_object(
         self,
         *,
-        bucket: str,
         object_key: str,
         content_base64: str,
+        bucket: str = "",
         content_type: str = "",
         metadata: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
@@ -80,9 +80,9 @@ class OSSUploadClient:
     def upload_object_bytes(
         self,
         *,
-        bucket: str,
         object_key: str,
         content: bytes,
+        bucket: str = "",
         content_type: str = "",
         metadata: dict[str, Any] | None = None,
     ) -> dict[str, Any]:

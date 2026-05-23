@@ -72,7 +72,6 @@ oss = build_oss_upload_client(
     ephemeral_token="token-abc",
 )
 uploaded = oss.upload_object_bytes(
-    bucket="media-bucket",
     object_key="podcasts/demo.mp3",
     content=b"audio bytes",
     content_type="audio/mpeg",

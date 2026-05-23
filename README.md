@@ -62,7 +62,6 @@ oss = build_oss_upload_client(
     ephemeral_token="ephemeral-token",
 )
 uploaded = oss.upload_object_bytes(
-    bucket="media-bucket",
     object_key="podcasts/demo.mp3",
     content=b"audio bytes",
     content_type="audio/mpeg",
@@ -122,7 +121,6 @@ const oss = buildOssUploadClient(
   "ephemeral-token",
 )
 const uploaded = await oss.uploadObjectBytes({
-  bucket: "media-bucket",
   objectKey: "podcasts/demo.mp3",
   content: new TextEncoder().encode("audio bytes"),
   contentType: "audio/mpeg",

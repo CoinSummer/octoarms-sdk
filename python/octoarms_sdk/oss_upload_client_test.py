@@ -62,6 +62,24 @@ class BuildOSSUploadClientTests(unittest.TestCase):
 
         self.assertEqual(out.get("uri"), "oss://bucket/key.txt")
 
+    def test_allows_backend_configured_bucket_by_omitting_bucket(self) -> None:
+        def fake_request(_url: str, _method: str, _headers: dict[str, str], body: bytes) -> tuple[int, str]:
+            payload = json.loads(body.decode("utf-8"))
+            self.assertEqual(payload["bucket"], "")
+            self.assertEqual(payload["object_key"], "datasets/demo.json")
+            return 200, json.dumps(
+                {"code": 0, "data": {"bucket": "dataset-bucket", "uri": "oss://dataset-bucket/datasets/demo.json"}}
+            )
+
+        client = build_oss_upload_client("https://scanner", "", request_fn=fake_request)
+        out = client.upload_object(
+            object_key="datasets/demo.json",
+            content_base64="eyJvayI6dHJ1ZX0=",
+            content_type="application/json",
+        )
+
+        self.assertEqual(out.get("bucket"), "dataset-bucket")
+
     def test_raises_on_failed_upload(self) -> None:
         def fake_request(_url: str, _method: str, _headers: dict[str, str], _body: bytes) -> tuple[int, str]:
             return 403, "forbidden"

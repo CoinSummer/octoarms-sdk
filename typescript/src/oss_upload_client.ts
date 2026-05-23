@@ -6,7 +6,7 @@ export type OssUploadRequestFn = (
 ) => Promise<{ status: number; text: string }>
 
 export type UploadObjectInput = {
-  bucket: string
+  bucket?: string
   objectKey: string
   contentBase64: string
   contentType?: string
@@ -14,7 +14,7 @@ export type UploadObjectInput = {
 }
 
 export type UploadObjectBytesInput = {
-  bucket: string
+  bucket?: string
   objectKey: string
   content: Uint8Array
   contentType?: string
