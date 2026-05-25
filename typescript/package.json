@@ -1,6 +1,6 @@
 {
   "name": "@coinsummer/octoarms-sdk",
-  "version": "0.2.7",
+  "version": "0.2.9",
   "repository": {
     "type": "git",
     "url": "https://github.com/CoinSummer/octoarms-sdk"
@@ -19,6 +19,10 @@
     "./context": {
       "types": "./dist/context.d.ts",
       "import": "./dist/context.js"
+    },
+    "./long_text": {
+      "types": "./dist/long_text.d.ts",
+      "import": "./dist/long_text.js"
     }
   },
   "files": [
